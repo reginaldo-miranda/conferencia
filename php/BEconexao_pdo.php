@@ -51,7 +51,7 @@ function getconexao(){
     }catch(PDOException $ex){
         echo 'Erro :' .$ex->getMessage();
     }
-}*/
+}
 
 function getconexao(){
     $dsn = 'mysql:host=localhost;dbname=vendas;charset=utf8';
@@ -65,5 +65,27 @@ function getconexao(){
     }
 }
 
+
+$myDB=odbc_connect('arquivos','','');
+$query="SELECT * FROM vendapdv";
+$result=odbc_exec($myDB, $query);
+
+print("DocRef <b>");
+print(odbc_result_all($result));
+odbc_close($myDB);
+*/
+$conn = odbc_connect('arquivos','','');
+if(!$conn){
+  exit ('falha na conexao');  
+}
+$sql = "select * from vendapdv";
+$rs = odbc_exec($conn,$sql);
+if (!$rs){
+    exit ("erro no sql");
+}
+while(odbc_fetch_row($rs)){
+    $doc = odbc_result($rs,"docref");
+    
+}
 
 ?>
