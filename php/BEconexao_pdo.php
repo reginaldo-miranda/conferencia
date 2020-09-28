@@ -74,7 +74,12 @@ print("DocRef <b>");
 print(odbc_result_all($result));
 odbc_close($myDB);
 */
-$conn = odbc_connect('arquivos','','');
+
+
+//$conn =  odbc_connect ( "Driver={SQL Server};Server=$servername;Database=$dbname;", $username, $password ) or die ( "Connection failed: " . $conn );
+
+$conn = odbc_connect('bcdados','','');
+
 if(!$conn){
   exit ('falha na conexao');  
 }
@@ -86,6 +91,29 @@ if (!$rs){
 while(odbc_fetch_row($rs)){
     $doc = odbc_result($rs,"docref");
     
-}
+} 
+/*
 
+$conn = new PDO("odbc:BCDADOS");
+
+
+try{
+    $conn = new PDO ("odbc:bcdados");
+
+    die(json_encode(array('outcome' => true)));
+}
+catch(PDOException $ex){
+     die(json_encode(array('outcome' => false, 'message' => 'Unable to connect')));
+}
+*/
+
+/*
+
+$database = "db";
+$user = "user";
+$password = "pass";
+$hostname = "ip";
+$port = portNo;
+$db = odbc_connect("Driver={Your-Driver};HOSTNAME=$hostname;
+Database=$database;PORT=$port;PROTOCOL=TCPIP;", $user, $password); */
 ?>
