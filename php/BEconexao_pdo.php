@@ -78,7 +78,8 @@ odbc_close($myDB);
 
 //$conn =  odbc_connect ( "Driver={SQL Server};Server=$servername;Database=$dbname;", $username, $password ) or die ( "Connection failed: " . $conn );
 
-$conn = odbc_connect('_64','','');
+ $conn = odbc_connect('bcdados','','');
+//$conn = obdc_connect("driver = {Driver Microsoft Paradox (*.db)}) ('bcdados','','')");
 
 if(!$conn){
   exit ('falha na conexao');  
@@ -92,6 +93,8 @@ while(odbc_fetch_row($rs)){
     $doc = odbc_result($rs,"docref");
     
 } 
+
+
 /*
 
 $conn = new PDO("odbc:BCDADOS");
