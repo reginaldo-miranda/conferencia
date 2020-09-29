@@ -78,7 +78,7 @@ odbc_close($myDB);
 
 //$conn =  odbc_connect ( "Driver={SQL Server};Server=$servername;Database=$dbname;", $username, $password ) or die ( "Connection failed: " . $conn );
 
-$conn = odbc_connect('bcdados','','');
+$conn = odbc_connect('_64','','');
 
 if(!$conn){
   exit ('falha na conexao');  
