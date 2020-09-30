@@ -95,13 +95,71 @@ while(odbc_fetch_row($rs)){
 
 
 
-$fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
-  
+/* $fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
+if (isset($fp)){
+    echo 'conectou';
+} */
 
+$fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
+
+ $fp = 'select docref from vendapdv';
+
+ foreach($com as $file){
+    $content = file_get_contents($file);
+    $lines = substr_count($content, "\n");
+
+    echo "Conteúdo: ", $content, PHP_EOL;
+    echo "Linhas: ", $lines, PHP_EOL;
+}
+  /*
+
+while (!feof($fp)) {
+  $line = fgetss($fp);
+ // $array = file("$fp");
+
+ // list ($docref) = fscanf($fp, "%s %s %s");
+ // $file_array = parse_ini_file("$fp");
+//  print_r($line);
+ // var_dump($line);
+   // echo $line = value['docref'];
+ /*   
+$arq = 'modelo.php';
+$conteudo = file_get_contents($arq);
+
+$trans = array(
+            '$varA' => $varA,
+            '$varB' => $varB,
+            '$varC' => $varC,
+            '$varD' => $varD,
+            '$varE' => $varE
+         );
+
+$conteudo = strtr($conteudo, $trans);*/
+    
+  
+    
+/*    
+    
+    
+    
+    
+    $arq="modelo.php";
+$abre=fopen($arq, "r+");
+$conteudo = fread($abre, filesize($arq));
+$conteudo = str_replace('$variavel', $variavel, $conteudo);
+fclose($abre);
+
+echo $conteudo;
+    
+    
+    
+    
+}*/
+fclose($fp);
 // $fp =  fopen(__DIR__ . "vendapdv.db","r");
 //$pxdoc = new paradox_db();
-if(!$pxdoc->open_fp($fp)) {
-    /* Error handling  */
+/* if(!$pxdoc->open_fp($fp)) {
+    /* Error handling  *
 
 }
 // ...
@@ -124,7 +182,7 @@ px_delete($pxdoc);
 fclose($fp);
 
 
-
+https://developer.ibm.com/br/technologies/php/articles/os-php-readfiles/ 
 
 
 /*
