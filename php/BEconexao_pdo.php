@@ -77,9 +77,8 @@ odbc_close($myDB);
 
 
 //$conn =  odbc_connect ( "Driver={SQL Server};Server=$servername;Database=$dbname;", $username, $password ) or die ( "Connection failed: " . $conn );
-
- $conn = odbc_connect('bcdados','','');
-//$conn = obdc_connect("driver = {Driver Microsoft Paradox (*.db)}) ('bcdados','','')");
+/*
+$conn = odbc_connect('_64','','');
 
 if(!$conn){
   exit ('falha na conexao');  
@@ -91,8 +90,39 @@ if (!$rs){
 }
 while(odbc_fetch_row($rs)){
     $doc = odbc_result($rs,"docref");
-    
-} 
+
+}    */
+
+
+
+$fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
+
+// $fp =  fopen(__DIR__ . "vendapdv.db","r");
+$pxdoc = new paradox_db();
+if(!$pxdoc->open_fp($fp)) {
+    /* Error handling  */
+}
+// ...
+
+$pxdoc->close();
+fclose($fp);
+
+if(!$pxdoc = px_new()) {
+    /* Error handling  */
+}
+
+ /*
+$fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
+if(!px_open_fp($pxdoc, $fp)) {
+    /* Error handling
+}
+// ...
+px_close($pxdoc);
+px_delete($pxdoc);
+fclose($fp);
+
+
+
 
 
 /*
