@@ -96,19 +96,21 @@ while(odbc_fetch_row($rs)){
 
 
 $fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
+  
 
 // $fp =  fopen(__DIR__ . "vendapdv.db","r");
-$pxdoc = new paradox_db();
+//$pxdoc = new paradox_db();
 if(!$pxdoc->open_fp($fp)) {
     /* Error handling  */
+
 }
 // ...
 
 $pxdoc->close();
 fclose($fp);
-
+   /*
 if(!$pxdoc = px_new()) {
-    /* Error handling  */
+    /* Error handling  *
 }
 
  /*
