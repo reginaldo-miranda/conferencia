@@ -1,71 +1,6 @@
 <?php
-/*
-function getconexao(){ // web 
-    $dsn = 'mysql:host=localhost;dbname=id13607804_conversao;charset=utf8';
-    $username = 'id13607804_reginaldo';
-    $pass = 'n@mCVvsfsFF|>r7V';
-    try{
-        $pdo = new PDO($dsn, $username, $pass);
-        return $pdo;
-    }catch(PDOException $ex){
-        echo 'Erro :' .$ex->getMessage();
-    }
-} */
 
 /*
-function getconexao(){
-$dsn = 'mysql:host=localhost;dbname=vendas';
-$username = 'root';
-$pass = '';
-$pdo = new PDO($dsn, $username, $pass);
-} 
-
-
-
-
-/*
-function getconexao(){
-$servername = "localhost";
-$username = "id13607804_reginaldo";
-$password = "n@mCVvsfsFF|>r7V";
-$database = "id13607804_conversao";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully"; 
-    } catch(PDOException $e) {    
-    echo "Connection failed: " . $e->getMessage();
-    }*/
-
-/*
-
-function getconexao(){
-    $dsn = 'mysql:host=localhost;dbname=conversoa;charset=utf8';
-    $username = 'root';
-    $pass = '';
-    try{
-        $pdo = new PDO($dsn, $username, $pass);
-        return $pdo;
-    }catch(PDOException $ex){
-        echo 'Erro :' .$ex->getMessage();
-    }
-}
-
-function getconexao(){
-    $dsn = 'mysql:host=localhost;dbname=vendas;charset=utf8';
-    $username = 'root';
-    $pass = '';
-    try{
-        $pdo = new PDO($dsn, $username, $pass);
-        return $pdo;
-    }catch(PDOException $ex){
-        echo 'Erro :' .$ex->getMessage();
-    }
-}
-
-
 $myDB=odbc_connect('arquivos','','');
 $query="SELECT * FROM vendapdv";
 $result=odbc_exec($myDB, $query);
@@ -98,7 +33,7 @@ while(odbc_fetch_row($rs)){
 /* $fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
 if (isset($fp)){
     echo 'conectou';
-} */
+} 
 
 $fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
 
@@ -116,12 +51,11 @@ $fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
 while (!feof($fp)) {
   $line = fgetss($fp);
  // $array = file("$fp");
-
  // list ($docref) = fscanf($fp, "%s %s %s");
  // $file_array = parse_ini_file("$fp");
-//  print_r($line);
+ //  print_r($line);
  // var_dump($line);
-   // echo $line = value['docref'];
+ // echo $line = value['docref'];
  /*   
 $arq = 'modelo.php';
 $conteudo = file_get_contents($arq);
@@ -134,28 +68,31 @@ $trans = array(
             '$varE' => $varE
          );
 
-$conteudo = strtr($conteudo, $trans);*/
-    
-  
-    
-/*    
-    
-    
-    
-    
-    $arq="modelo.php";
-$abre=fopen($arq, "r+");
-$conteudo = fread($abre, filesize($arq));
-$conteudo = str_replace('$variavel', $variavel, $conteudo);
-fclose($abre);
+$conteudo = strtr($conteudo, $trans);
 
-echo $conteudo;
-    
-    
-    
-    
-}*/
-fclose($fp);
+fclose($fp);*/
+
+ /*   
+// $bd = 'vendapdv.db';
+// $abre = fopen("..\arquivos_teste\\vendapdv.db", "r+");    
+
+ //$my_file = 'list.txt';
+$my_file = 'vendapdv.db';
+//$handle = fopen($my_file, 'r');
+$handle = fopen("..\arquivos_teste\\$my_file", "r+"); 
+echo 'conectou no bco';
+//if (file_exists($handle)) {
+      echo 'dentro do 1 if';
+    $data = '';
+ //   if(filesize($my_file) > 0){
+        echo 'dentro do 2 if';
+        $data = fread($handle,filesize($my_file));
+        echo ' data'.$data;
+  //  }
+   fclose($handle);
+ echo 'fechei'    ;
+//}
+
 // $fp =  fopen(__DIR__ . "vendapdv.db","r");
 //$pxdoc = new paradox_db();
 /* if(!$pxdoc->open_fp($fp)) {
@@ -198,35 +135,29 @@ try{
 catch(PDOException $ex){
      die(json_encode(array('outcome' => false, 'message' => 'Unable to connect')));
 }
-*/
 
-/*
 
-$database = "db";
-$user = "user";
-$password = "pass";
-$hostname = "ip";
-$port = portNo;
-$db = odbc_connect("Driver={Your-Driver};HOSTNAME=$hostname;
-Database=$database;PORT=$port;PROTOCOL=TCPIP;", $user, $password); */
 
+?> */
 //----------------------------------------------------------------------
 
-<?php
 
-/*
-Implement class to use paradox functions
-*/
+
+//Implement class to use paradox functions
+
 
 class cParadox
 {
+    
     //members
-    var $m_pxdoc = NULL;
+    var $m_pxdoc  = NULL;
+   // var $m_pxdoc = "..\arquivos_teste\\vendapdv.db";
     var $m_fp     = NULL;
     var $m_rs     = NULL;
     var $m_default_field_value = "";
-    var $m_use_field_slashes = false;   
+    var $m_use_field_slashes   = false;   
     var $m_use_field_trim      = false;   
+    var $filename =  "..\arquivos_teste\\vendapdv.db";
     
     function Open($filename)
     {
@@ -303,7 +234,7 @@ class cParadox
     }
 };
 
-usage example:
+//usage example:
 error_reporting(E_ERROR);
 require_once("cparadox.inc");
 
@@ -430,7 +361,266 @@ class Paradox {
         return px_get_field($this->doc, $id);
     }
 }
+
+//--------------------------------------------------------------------------------
+
+A navegação de código está disponível!
+Navegue pelo seu código com facilidade. Clique nas chamadas de função e método para pular para suas definições ou referências no mesmo repositório. Saber mais
+
+<? php
+/ **
+ * Classe de banco de dados Paradox
+ *
+ * Faz uso das funções Paradox do PHP (via pxlib) para acessar dados convenientemente
+ * em um banco de dados Paradox com funções de estilo SQL.
+ * @package Paradox DB
+ * @author Luke Mundy
+ * /
+classe  Paradox_Database
+{
+	privado  $ _px = NULL ;
+	privado  $ _fp = NULL ;
+	
+	private  $ _file = '' ;
+	private  $ _mode = '' ;
+	
+	private  $ _select = array ();
+	private  $ _where = array ();
+	privado  $ _limit = 0 ;
+	private  $ _offset = 0 ;
+	
+	/ **
+	 * Construtor
+	 *
+	 * Defina alguns valores padrão
+	 * @return void
+	 * /
+	 função  pública __construct ()
+	{
+		// Cria o objeto de banco de dados Paradox do PHP
+		$ this -> _px = new paradox_db ();
+	}
+	
+	/ **
+	 * Destruidor
+	 *
+	 * Feche o banco de dados e o ponteiro do arquivo
+	 * @return void
+	 * /
+	 função  pública __destruct ()
+	{
+		$ this -> _px -> close ();
+		if ( $ this -> _fp ) fclose ( $ this -> _fp );
+	}
+	
+	/ **
+	 * Selecione quais campos retornar
+	 * @return void
+	 * /
+	 seleção de função  pública ()
+	{
+		$ args = func_get_args ();
+		
+		// Foi fornecida uma matriz de campos?
+		if ( is_array ( $ args [ 0 ]))
+		{
+			foreach ( $ args [ 0 ] as  $ field )
+			{
+				// Certifique-se de que é uma string e ainda não está na lista
+				if ( is_string ( $ field ) &&! in_array ( $ field , $ this -> _select )) $ this -> _select [] = $ field ;
+			}
+		}
+		// Ou uma lista separada por vírgulas?
+		elseif ( is_string ( $ args [ 0 ]))
+		{
+			$ campos = explode ( ',' , $ args [ 0 ]);
+			
+			foreach ( $ campos  como  $ campo )
+			{
+				$ field = trim ( $ field );
+				
+				// Certifique-se de que o campo já não esteja na lista
+				if (! in_array ( $ field , $ this -> _select )) $ this -> _select [] = $ field ;
+			}
+		}
+		
+		// Retorne $ this para que possamos fazer algum encadeamento de métodos legal
+		return  $ this ;
+	}
+	
+	/ **
+	 * Filtre as linhas retornadas por um determinado critério
+	 * @return void
+	 * /
+	 função  pública onde ()
+	{
+		$ args = func_get_args ();
+		
+		if ( is_array ( $ args [ 0 ]))
+		{
+			foreach ( $ args [ 0 ] as  $ test )
+			{
+				$ this -> _where [] = array (
+					'campo' => $ test [ 0 ],
+					'operador' => $ test [ 1 ],
+					'valor' => escapeshellarg ( $ test [ 2 ])
+				);
+			}
+		}
+		elseif ( is_string ( $ args [ 0 ]))
+		{
+			$ this -> _where [] = array (
+				'campo' => $ args [ 0 ],
+				'operador' => $ args [ 1 ],
+				'valor' => escapeshellarg ( $ args [ 2 ])
+			);
+		}
+		
+		// Retorne $ this para que possamos fazer algum encadeamento de métodos legal
+		return  $ this ;
+	}
+	
+	/ **
+	 * Limite a quantidade de resultados de retorno
+	 * @return void
+	 * /
+	 limite de função  pública ()
+	{
+		if ( func_num_args () == 1 ) $ this -> _limit = func_get_arg ( 0 );
+		outro
+		{
+			$ this -> _offset = func_get_arg ( 0 );
+			$ this -> _limit = func_get_arg ( 1 );
+		}
+		
+		// Retorne $ this para que possamos fazer algum encadeamento de métodos legal
+		return  $ this ;
+	}
+	
+	/ **
+	 * Obtenha registros
+	 * @return array registros correspondentes
+	 * /
+	public  function  get ()
+	{
+		// Comece com um array vazio
+		$ ret = array ();
+		
+		// Loop por todos os registros no banco de dados
+		for ( $ x = 0 ; ( $ x < $ this -> num_records () && count ( $ ret ) < $ this -> _limit ); $ x ++)
+		{			
+			$ row = $ this -> _px -> retrieve_record ( $ x );
+			
+			if ( $ this -> _test ( $ row ))
+			{
+				foreach ( $ row  as  $ key => $ val )
+				{
+					// Encontre todos os campos que não estão na matriz selecionada
+					if (! in_array ( $ key , $ this -> _select ) &&! empty ( $ this -> _select )) unset ( $ row [ $ key ]);
+				}
+				
+				$ ret [] = $ linha ;
+			}
+		}
+		
+		return  $ ret ;
+	}
+	
+	/ **
+	* Abra o banco de dados
+	* @param string $ file Caminho para o arquivo de banco de dados
+	* @param string $ mode Modo de abertura de arquivo
+	* @return bool TRUE em caso de sucesso, FALSE caso contrário
+	* /
+	 função  pública aberta ( $ file , $ mode = 'r' )
+	{
+		$ this -> _file = $ file ;
+		$ this -> _mode = $ mode ;
+		
+		return  $ this -> _open ();
+	}
+	
+	/ **
+	* Testa a linha fornecida
+	* @param array $ row
+	* @return bool TRUE se a linha passa em todos os testes
+	* /
+	 função  privada _test ( $ row )
+	{
+		$ pass = TRUE ;
+		
+		// Se não houver testes, todas as linhas passarão
+		if (! empty ( $ this -> _where ))
+		{
+			foreach ( $ this -> _where  as  $ test )
+			{
+				$ field = escapeshellarg ( $ row [ $ test [ 'field' ]]);			
+			
+				$ txt = "return ({$ field} {$ test ['operator']} {$ test ['value']});" ;
+				
+				// Verifique se há falha
+				if (! eval ( $ txt ))
+				{
+					$ pass = FALSE ;
+					
+					// Não há necessidade de tentar outros testes
+					pausa ;
+				}
+			}
+		}
+		
+		return  $ pass ;
+	}
+	
+	/ **
+	* Função privada aberta
+	* @return bool TRUE em caso de sucesso, FALSE caso contrário
+	* /
+	 função  pública _open ()
+	{
+		$ ret = FALSE ;
+		
+		// Verifique se o arquivo existe
+		if ( file_exists ( $ this -> _file ))
+		{
+			$ this -> _fp = fopen ( $ this -> _file , $ this -> _mode );
+			
+			// Aberto com sucesso?
+			if ( $ this -> _fp )
+			{
+				// Banco de dados aberto com sucesso?
+				if ( $ this -> _px -> open_fp ( $ this -> _fp ))
+				{
+					$ ret = TRUE ;
+				}
+			}
+		}
+		
+		return  $ ret ;
+	}
+	
+	
+	/ ** ----------------------------------------------- -------------------------
+	 * Funções de acesso
+	 * /
+	
+	public  function  get_file_pointer () { return  $ this -> _fp ; }
+	public  function  get_paradox_object () { return  $ this -> _px ; }
+	 função  pública num_records () { return  $ this -> _px -> numrecords (); }
+	 função  pública num_fields () { return  $ this -> _px -> numfields (); }
+	
+	public  function  debug ()
+	{
+		echo  'SELECT' . print_r ( $ this -> _select , TRUE ). "\ n" ;
+		echo  'ONDE' . print_r ( $ this -> _where , TRUE ). "\ n" ;
+	}
+}
+
+// END - classe Paradox_Database
+
+// https://github.com/lukemundy/paradox-php
+
 ?>
-?>
+
 
 
