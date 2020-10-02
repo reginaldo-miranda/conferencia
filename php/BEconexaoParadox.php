@@ -619,6 +619,7 @@ classe  Paradox_Database
 // END - classe Paradox_Database
 
 // https://github.com/lukemundy/paradox-php
+// http://www.nusphere.com/kb/phpmanual/ref.paradox.htm
 
 ?>
 
