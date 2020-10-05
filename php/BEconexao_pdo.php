@@ -68,11 +68,16 @@ function getconexao(){
 }
 */
 
-
+/*
 
 //$conn =  odbc_connect ( "Driver={SQL Server};Server=$servername;Database=$dbname;", $username, $password ) or die ( "Connection failed: " . $conn );
-/*
-$conn = odbc_connect('...\BRAINCFG.INI','','');
+
+$conn = '';
+$db = '\\\\server\\resource\\db.mdb';
+//$conn = new COM('ADODB.Connection');
+$conn->Open("DRIVER={Driver do Microsoft Access (*.mdb)}; DBQ=$db");
+
+$conn = odbc_connect('..\arquivos_teste\vendapdv.db','','');
 
 if(!$conn){
   exit ('falha na conexao');  
@@ -86,7 +91,18 @@ while(odbc_fetch_row($rs)){
     $doc = odbc_result($rs,"docref");
 
 }    
+
 */
+//---------------------------------inicio --------------------------------------
+$myDB=odbc_connect("Suporte","","");
+$query="SELECT * from vendapdv";
+$result=odbc_exec($myDB, $query);
+print("Username: <b>");
+print(odbc_result_all($result));
+odbc_close($myDB);
+
+//--------------------------------------------fim------------------------------
+
 
 //-----------------------------inicio ------------------------------------
 /*
@@ -233,29 +249,33 @@ fclose($fp);
 
 
 // ----------------------------------inicio -------------------------------
-$arquivo = fopen('..\arquivos_teste\\venda.txt','r');
+/*
+$arquivo = fopen('..\arquivos_teste\\vendapdv.db','r');
 if ($arquivo == false) die('Não foi possível abrir o arquivo.');
 // imprime linha por linha ate detectar o final
 while(!feof($arquivo)) {
 	echo fgets($arquivo). '<br />';
+    //$pessoa = mysql_fetch_assoc($arquivos);
+    echo $arquivo['docref'];
+    
 }
 fclose($arquivo);
 
 
-
+/*
 <?php
 $filename = "c:\\files\\figura.gif";
 $handle = fopen ($filename, "rb");
 $conteudo = fread ($handle, filesize ($filename));
 fclose ($handle);
-?>
-?>
+
+*/
 
 //-----------------------------------fim ----------------------------------
-/*
-https://developer.ibm.com/br/technologies/php/articles/os-php-readfiles/ 
-https://eufacoprogramas.com/como-manipular-arquivos-em-php/
-*/
+// https://www.google.com.br/search?newwindow=1&sxsrf=ALeKk00WhY1nNTzGopOVsIMTS2r4oSvp3w%3A1601926154493&lei=CnR7X8zEHfKj5OUPno-soAg&q=habilitar%20odbc%20php%20ini&ved=2ahUKEwjM8ZP7l57sAhXyEbkGHZ4HC4QQsKwBKAB6BAgfEAE&biw=1280&bih=686
+
+// https://stackoverflow.com/questions/34200997/php-7-0-odbc-driver-for-windows
+
 ?>
 
 
