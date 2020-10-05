@@ -88,8 +88,8 @@ while(odbc_fetch_row($rs)){
 }    
 */
 
-
-
+//-----------------------------inicio ------------------------------------
+/*
 
 $fp = fopen("..\arquivos_teste\\vendapdv.db", "r+");
 // $fp = fopen("..\BRAINSOFT.INI", "r");
@@ -109,7 +109,7 @@ if (isset($fp)){
     echo "Conteúdo: ", $content, PHP_EOL;
     echo "Linhas: ", $lines, PHP_EOL;
 }
-*/  
+ 
 
 while (!feof($fp)) {
  $line = fgetss($fp);
@@ -123,7 +123,9 @@ while (!feof($fp)) {
  var_dump($line);
 //echo $line = ['docref'];
    }
-
+fclose($fp);
+*/
+//----------------------------------------------fim ------------------------------------------------------
 
  /*
 $arq = 'modelo.php';
@@ -158,7 +160,7 @@ echo $conteudo;
     
     
 }*/
-fclose($fp);
+
 // $fp =  fopen(__DIR__ . "vendapdv.db","r");
 //$pxdoc = new paradox_db();
 /* if(!$pxdoc->open_fp($fp)) {
@@ -185,7 +187,7 @@ px_delete($pxdoc);
 fclose($fp);
 
 
-https://developer.ibm.com/br/technologies/php/articles/os-php-readfiles/ 
+
 
 
 
@@ -215,6 +217,45 @@ Database=$database;PORT=$port;PROTOCOL=TCPIP;", $user, $password); */
 //----------------------------------------------------------------------
 
 
+
+//-------------------------------------------------inicio ----
+/*
+// $arquivo = fopen('meuarquivo.txt','r');
+$fp = fopen("..\arquivos_teste\\vendapdv.db", "r");
+$string = file_get_contents('..\arquivos_teste\\vendapdv.db');
+echo $string;
+fclose($fp);
+
+*/ 
+//------------------------------------------------- fim ----------------------
+
+
+
+
+// ----------------------------------inicio -------------------------------
+$arquivo = fopen('..\arquivos_teste\\venda.txt','r');
+if ($arquivo == false) die('Não foi possível abrir o arquivo.');
+// imprime linha por linha ate detectar o final
+while(!feof($arquivo)) {
+	echo fgets($arquivo). '<br />';
+}
+fclose($arquivo);
+
+
+
+<?php
+$filename = "c:\\files\\figura.gif";
+$handle = fopen ($filename, "rb");
+$conteudo = fread ($handle, filesize ($filename));
+fclose ($handle);
+?>
+?>
+
+//-----------------------------------fim ----------------------------------
+/*
+https://developer.ibm.com/br/technologies/php/articles/os-php-readfiles/ 
+https://eufacoprogramas.com/como-manipular-arquivos-em-php/
+*/
 ?>
 
 
