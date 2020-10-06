@@ -75,11 +75,11 @@ function getconexao(){
 //$conn =  odbc_connect ( "Driver={SQL Server};Server=$servername;Database=$dbname;", $username, $password ) or die ( "Connection failed: " . $conn );
 
 $conn = '';
-$db = '\\\\server\\resource\\db.mdb';
+//$db = '\\\\server\\resource\\db.mdb';
 //$conn = new COM('ADODB.Connection');
 //$conn->Open("DRIVER={Driver do Microsoft Access (*.mdb)}; DBQ=$db");
 
-$conn = odbc_connect('vendapdv.db','','');
+$conn = odbc_connect('phpbanco','','');
 
 if(!$conn){
   exit ('falha na conexao');  
@@ -289,7 +289,7 @@ fclose ($handle);
 
 
 // https://stackoverflow.com/questions/39275875/connecting-to-paradox-database-through-windows-odbcconf-command-line
-
+/*
 
 
 Eu descobri como fazer isso:
@@ -303,14 +303,18 @@ depois de terminar de trabalhar com ele.
 
 
 Se você for abrir arquivos Paradox DB do MS Access e receber um erro - "Erro inesperado do driver de banco de dados externo (11265)", 
-você deve fazer o seguinte. 1. você precisa fornecer a autenticação de administrador para odbc32 .dll 2. 
-Permita o acesso total do usuário atual ao odbc32.dll 3. Altere a propriedade do odbc32.dll para o usuário / administrador atual 4. 
-Você deve instalar o BDE (Borland Database Engine) para abrir os arquivos do banco de dados paradox. 5. 
-vá para o painel de controle e abra a fonte de dados (odbc). 
+você deve fazer o seguinte. 
+    1. você precisa fornecer a autenticação de administrador para odbc32 .dll 
+    2. Permita o acesso total do usuário atual ao odbc32.dll 
+    3. Altere a propriedade do odbc32.dll para o usuário / administrador atual 
+    4. Você deve instalar o BDE (Borland Database Engine) para abrir os arquivos do banco de dados paradox.
+    5. vá para o painel de controle e abra a fonte de dados (odbc). 
 Após abrir o odbc vá para o pool de conexão e habilite o polling para o driver do Microsoft Access (* mdb) e o driver do 
-Microsoft Paradox (* .db) 6. Adicione o DSN do arquivo para definir o diretório do banco de dados paradox 7. 
-Crie o DSN do USer para Driver do Microsoft Paradox 8. Altere o caminho NET DIR para a pasta do banco de dados do paradox.
-
+Microsoft Paradox (* .db)
+    6. Adicione o DSN do arquivo para definir o diretório do banco de dados paradox 
+    7. Crie o DSN do USer para Driver do Microsoft Paradox
+    8. Altere o caminho NET DIR para a pasta do banco de dados do paradox.
+*/
 ?>
 
 
